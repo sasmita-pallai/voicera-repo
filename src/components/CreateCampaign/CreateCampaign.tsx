@@ -27,13 +27,11 @@ function CreateCampaign() {
   const [calling, setCalling] = useState<File | null>(null);
   const [transcript, setTranscript] = useState<File | null>(null);
   const [assistance, setAssistance] = useState<File | null>(null);
-  const [campaignImage, setCampaignImage] = useState<File | null>(null); // ✅ new state
+  const [campaignImage, setCampaignImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [campaignPdf, setCampaignPdf] = useState("");
 
   const [message, setMessage] = useState("");
-
-
 
   const handleSubmit = async () => {
     if (
@@ -49,7 +47,7 @@ function CreateCampaign() {
       !timeSensitivity.end_date.trim() ||
       !timeSensitivity.call_mode.trim() ||
       !calling ||
-      !postmanCollection.trim() || // ✅ string check
+      !postmanCollection.trim() ||
       !transcript ||
       !assistance ||
       !campaignImage
@@ -74,8 +72,7 @@ function CreateCampaign() {
         assistance,
         campaignImage,
         postman_collection: postmanCollection,
-        campaign_pdf: campaignPdf, // ✅ string
-
+        campaign_pdf: campaignPdf,
       };
 
       const response = await createCampaign(payload);
@@ -113,11 +110,10 @@ function CreateCampaign() {
           setAssistance={setAssistance}
           campaignImage={campaignImage}
           setCampaignImage={setCampaignImage}
-          postmanCollection={postmanCollection}     // ✅ new
-  setPostmanCollection={setPostmanCollection} 
-  campaignPdf={campaignPdf}
-  setCampaignPdf={setCampaignPdf}
-           
+          postmanCollection={postmanCollection}
+          setPostmanCollection={setPostmanCollection}
+          campaignPdf={campaignPdf}
+          setCampaignPdf={setCampaignPdf}
         />
 
         {/* Right Panel + Button */}
@@ -128,10 +124,9 @@ function CreateCampaign() {
             setAssignTo={setAssignTo}
             timeSensitivity={timeSensitivity}
             setTimeSensitivity={setTimeSensitivity}
-            postmanCollection={postmanCollection}        
+            postmanCollection={postmanCollection}
             setPostmanCollection={setPostmanCollection}
             calling={calling}
-            
           />
 
           <div className="flex gap-4">
@@ -148,8 +143,9 @@ function CreateCampaign() {
               size="xs"
               className="w-[340px] py-4 "
               onClick={handleSubmit}
+              disabled={loading}
             >
-              Submit
+              {loading ? "Submitting..." : "Submit"}
             </Button>
           </div>
 

@@ -40,9 +40,6 @@ function Left({
   setAssistance,
   campaignImage,
   setCampaignImage,
-  postmanCollection,
-  setPostmanCollection,
-  campaignPdf,                                          // ✅ NEW
   setCampaignPdf,
 
   

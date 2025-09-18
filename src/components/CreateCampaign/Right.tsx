@@ -22,7 +22,6 @@ const Right = ({
   setAssignTo,
   timeSensitivity,
   setTimeSensitivity,
-  postmanCollection,
   setPostmanCollection,
   
 }: RightProps) => {
